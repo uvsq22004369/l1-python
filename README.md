@@ -156,3 +156,4 @@ Cette procédure vous permettra de conserver vos modifications entre les séance
 * [Documentation](https://code.visualstudio.com/docs) (en anglais)
 * [Python in Visual Studio Code](https://code.visualstudio.com/docs/languages/python)
 * Extension [Microsoft Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) ([tutoriel](https://code.visualstudio.com/docs/python/python-tutorial))
+"# jeu_d-echec" 
