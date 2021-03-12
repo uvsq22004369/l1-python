@@ -102,7 +102,7 @@ def gris():
     mat = loading(nomImgCourante)
     for i in range(nbrLig(mat)):
         for j in range(nbrCol(mat)):
-            gris = int(mat[i][j][0]*0.2125 + mat[i][j][1]*0,7154 + mat[i][j][2]*0,721)
+            gris = int(mat[i][j][0]*0.2125 + mat[i][j][1]*0,7154 + mat[i][j][2]*0,0721)
     mat[i][j] = (gris, gris, gris, 255)
     modify(mat)
 
