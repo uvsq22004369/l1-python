@@ -37,7 +37,7 @@ def rect(x,y,w,h) :
 def clear() :
     {
     ctx.clearRect(0, 0, WIDTH, HEIGHT);
-    
+
 
 def draw() :
     { ctx.fillStyle = backcolor;
@@ -64,25 +64,26 @@ def draw() :
         bricks[row][col] = 0;
         }
   
-  // On prend en compte la paroi de la balle et non son centre
-  if (x + dx + ballr > WIDTH || x + dx - ballr < 0)
-    dx = -dx;
+  ## On prend en compte la paroi de la balle et non son centre
+    if (x + dx + ballr > WIDTH || x + dx - ballr < 0) :
+        dx = -dx;
 
-  if (y + dy - ballr < 0)
-    dy = -dy;
-  else if (y + dy + ballr > HEIGHT - paddleh) {
-    if (x > paddlex and x < paddlex + paddlew) {
-      // On renvoie la balle différemment selon son lieu d'atterrissage
-      dx = 8 * ((x-(paddlex+paddlew/2))/paddlew);
-      dy = -dy;
-      }
-    else if (y + dy + ballr > HEIGHT)
-      clearInterval(intervalId);
-  }
+    if (y + dy - ballr < 0) :
+        dy = -dy;
+    else if (y + dy + ballr > HEIGHT - paddleh) {
+       if (x > paddlex and x < paddlex + paddlew) :
+           {
+      ## On renvoie la balle différemment selon son lieu d'atterrissage
+           dx = 8 * ((x-(paddlex+paddlew/2))/paddlew);
+           dy = -dy;
+           }
+       else if (y + dy + ballr > HEIGHT)
+           clearInterval(intervalId);
+           }
  
-  x += dx;
-  y += dy;
-}
+    x += dx;
+    y += dy;
+    }
 
-init(
+init()
 initbricks()
