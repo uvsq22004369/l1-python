@@ -86,13 +86,16 @@ def coder():
 
 
 def decoder_pixel(pixel):
-    pass
+    res = (derniers_bits(pixel[2],2) << 6) + (derniers_bits(pixel[1],3) << 3) + (derniers_bits(pixel[0],3))
+    return res
 
 
 def decoder():
     mat=loading(nomImgCourante)
     sortie = ""
-    #Compléter ici
+    
+    while  :
+        
     
     label_decodage.config(text= sortie)
 
