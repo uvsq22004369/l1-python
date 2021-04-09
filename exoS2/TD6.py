@@ -2,7 +2,7 @@ import tkinter as tk
 import PIL as pil
 from PIL import Image
 from PIL import ImageTk 
-from tkinter import filedialog
+from tkinter import Canvas, filedialog
 from tkinter import simpledialog
 
 def nbrCol(matrice):
@@ -65,7 +65,7 @@ def modify(matrice):
 def fermer_fenetre():
     affi.destroy()
 
-    def derniers_bits(x,k): #renvoie les k derniers bits de x
+def derniers_bits(x,k): #renvoie les k derniers bits de x
     pass
 
 print(derniers_bits(15,3))
@@ -95,8 +95,6 @@ def decoder():
     sortie = ""
     
 
-        
-    
     label_decodage.config(text= sortie)
 
 

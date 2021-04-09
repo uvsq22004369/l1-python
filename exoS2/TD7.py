@@ -1,13 +1,37 @@
 import tkinter as tk
 
 def decalage(lettre_message,lettre_cle):
-    pass
+    res = chr(ord(lettre_message) + ord(lettre_cle)) and ((1 << 8) -1)
+    return res
 
 def dec_texte(texte,cle):
-    pass
+    res = ""
+    i, j = 0, 0
+    while i < len(texte) :
+        res += decalage(texte[i], cle[j])
+        i += 1
+        j += 1
+        if j == len(cle) : 
+            j = 0
+    return res
 
 def chiffre():
-    pass
+    resultat.delete(0,tk.END)
+    if (entree_texte.get() == "" + entree_cle.get() == "") : 
+        resultat.insert(0),"Il manque des argument"
+    else :
+       resultat.insert(0,dec_texte(entree_texte.get(),entree_cle.get()))
+
+# On peut aussi faire 2 fonction différente
+#
+#def chiffre():
+#    resultat.delete(0,tk.END)
+#    resultat.insert(0,dec_texte(entree_texte.get(),entree_cle.get()))
+#
+#def detect() :
+#    if (entree_texte.get() == "" + entree_cle.get() == "") : 
+#        resultat.insert(0),"Il manque des argument"
+
 
 def dechiffre():
     pass
