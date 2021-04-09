@@ -94,7 +94,7 @@ def decoder():
     mat=loading(nomImgCourante)
     sortie = ""
     
-    while  :
+
         
     
     label_decodage.config(text= sortie)
