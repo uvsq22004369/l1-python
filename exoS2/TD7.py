@@ -47,7 +47,13 @@ def dechiffre():
       label_res.config(text = dechiffrement(resultat.get(), entree_cle.get()))
 
 def chiffre_xor(lettre_message,lettre_cle):
-    pass
+    return (chr(ord(lettre_message) ^ ord(lettre_cle)))
+
+
+
+
+
+
 
 racine=tk.Tk()
 racine.title("Cryptographie")
