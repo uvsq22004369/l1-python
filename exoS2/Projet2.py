@@ -17,16 +17,38 @@ import tkinter as tk
 root = tk.Tk()
 root.title("Projet Robot Ricochet")
 
-grid = robot_rico(root)
-grid.load(initial_values=G)
+def fin ():
+    root.quit()
+    root.destroy()
  
-grid.pack(fill='both')
-grid.update() # update grid to get real position from xxx_bbox
-grid.focus_set()
+def grille():
+    for i in range(nbcase+1):
+        Can.create_line(x0+case*i, y0,x0+case*i,y0 + nbcase*case)
+        Can.create_line(x0, y0+case*i,x0+nbcase*case ,y0+case*i)
+ 
+
+ 
+def jouer(event):
+    global trouve
+    [i,j]=correspond(event.x,event.y)
+    if i in range(nb) and j in range (nb):   # on ne fait rien si le click est hors grille
+        Can.create_rectangle(x0 +c*j,y0+c*i,x0 +c*(j+1),y0+c*(i+1),fill=coul(i,j))
+ 
+ 
+
+ 
+Texte1.grid(root , row=0,column=0)
+BouttonQuit.grid(root, row=50, column=100)
+Cadre.grid(root, row=1,column=0)
+BouttonJouer.grid(root, row=0, column=50)
+TexteC.grid(root, row=1, column=3)
+ 
+
+ 
 
 
 
-tk.mainloop root
+root.mainloop 
 
 
 
