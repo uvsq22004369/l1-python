@@ -14,62 +14,59 @@
 #import des librairies
 
 import tkinter as tk
-root = tk.Tk()
-root.title("Projet Robot Ricochet")
-ecriture=("comic sans ms",13)
-nbcase=9
-case=50
-x0,y0=9,9
-chifre=[0,1,2,3,4,5,6,7,8,9]
- 
-def fin ():
-    fenetre.quit()
-    fenetre.destroy()
- 
-def grille():
-    for i in range(nbcase+1):
-        Can.create_line(x0+case*i, y0,x0+case*i,y0 + nbcase*case)
-        Can.create_line(x0, y0+case*i,x0+nbcase*case ,y0+case*i)
- 
-def donne_position(event):
-    TexteC.delete("0.0",END)# on efface l'écriture précédente
-    TexteC.insert(END,"clic detecte en x="+str(event.x) + " et y = " + str(event.y))
- 
- 
- 
-def jouer(event):
-    global trouve
-    [i,j]=correspond(event.x,event.y)
-    if i in range(nb) and j in range (nb):   # on ne fait rien si le click est hors grille
-        Can.create_rectangle(x0 +c*j,y0+c*i,x0 +c*(j+1),y0+c*(i+1),fill=coul(i,j))
- 
- 
-def correspond(x,y):
-    return [(y-y0)/c,(x-x0)/c]
- 
- 
-fenetre=Tk()
-Cadre=Frame(fenetre)
-Texte1=Label(fenetre,text="Jeu du Sudoku",fg="red",font=ecriture)
-BouttonQuit=Button(fenetre,text="quitter", command=fin)
-BouttonJouer=Button(fenetre,text="jouer", command=grille)
-TexteC=Text(fenetre,height=25,width=25)
-Can=Canvas(Cadre,height=500,width=500,bg="white")
- 
- 
-Texte1.grid(row=0,column=0)
-BouttonQuit.grid(row=50, column=100)
-Cadre.grid(row=1,column=0)
-Can.grid(row=2, column=0)
-BouttonJouer.grid(row=0, column=50)
-TexteC.grid(row=1, column=3)
- 
-Can.bind("<Button-1>",donne_position)
- 
+from tkinter.constants import END, LEFT
+fenetre = tk.Tk()
+fenetre.title("Projet Robot Ricochet")
+fenetre.configure(width = 500, height = 500, bg ='grey')
 
 
+def Clavier(event):
+    """ Gestion de l'événement Appui sur une touche du clavier """
+    global PosX,PosY
+    touche = event.keysym
+    print(touche)
+    # déplacement vers le haut
+    if touche == 'z':
+        PosY -= 477
+    # déplacement vers le bas
+    if touche == 's':
+        PosY += 477
+    # déplacement vers la droite
+    if touche == 'd':
+        PosX += 477
+    # déplacement vers la gauche
+    if touche == 'q':
+        PosX -= 477
+    # on dessine le pion à sa nouvelle position
+    Canevas.coords(Pion,PosX -10, PosY -10, PosX +10, PosY +10)
 
-root.mainloop 
+
+# position initiale du pion
+PosX = 120
+PosY = 150
+
+# Création d'un widget Canvas (zone graphique)
+Largeur = 500
+Hauteur = 500
+Canevas = tk.Canvas(fenetre, width = Largeur, height =Hauteur, bg ='white')
+Pion = Canevas.create_oval(PosX-10,PosY-10,PosX+10,PosY+10,width=2, fill='red')
+Canevas.create_line(550,0,0,0, width=10, fill='black')#bon
+Canevas.create_line(0,0,0,0, width=10, fill='black')
+Canevas.create_line(0,0,0,0, width=10, fill='black')
+Canevas.create_line(0,0,0,550, width=10, fill='black')#bon
+Canevas.focus_set()
+Canevas.bind('<Key>',Clavier)
+Canevas.grid(row=2, column =0)
+
+# Création d'un widget Button (bouton Quitter)
+quitter = tk.Button(fenetre, text ='Quitter', command = fenetre.destroy)
+quitter.grid(row=6, column=0)
+
+explication = tk.Label(fenetre, text ='apuie sur z pour monté, s pour descendre, q pour aller à gauche et d pour aller a droite.')
+explication.grid(row=0, column=0)
+
+
+fenetre.mainloop()
 
 
 
