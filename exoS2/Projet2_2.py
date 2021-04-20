@@ -36,7 +36,7 @@ def robot_couleur_vert():
     cercle = canvas.create_oval((x-rayon, y-rayon),
                                 (x+rayon, y+rayon),
                                 fill="vert")
-     return [cercle, dx, dy]
+    return [cercle, dx, dy]
 
 def robot_couleur_bleu():
     
@@ -65,11 +65,12 @@ def mouvement():
 
 
 def undo():
-     repeat =
-    if 
+     repeat = input()
+    if :
         for i in range(repeat):
             canvas.delete()
             del()
+
 
 cpt=0          
 def compteur(event):

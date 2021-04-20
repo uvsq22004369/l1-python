@@ -18,9 +18,6 @@ from tkinter.constants import END, LEFT
 fenetre = tk.Tk()
 fenetre.title("Projet Robot Ricochet")
 fenetre.configure(width = 500, height = 500, bg ='beige')
-
-
-
        
 
 def Clavier(event):
