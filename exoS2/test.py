@@ -1,90 +1,15 @@
-###################################################
-# Groupe BI: 1                                    #
-# Mathieu LAM                                     #
-# Océane MACHADO                                  #
-# Aurélie ALVET                                   #
-# Timothé PEYREIGNE                               #
-# Thushanth JEYAKANTHN                            #
-# Merbah Yanis                                    #
-# 
-###################################################
-
-
-#import des librairies
-
-
 import tkinter as tk
-from tkinter.constants import END, LEFT
-fenetre = tk.Tk()
-fenetre.title("Projet Robot Ricochet")
-fenetre.configure(width = 300, height = 300, bg ='beige')
-       
-
 c = 50                         # Longueur d'un côté d'une case
 n = 16                         # Nombre de cases par ligne et par colonne
 cases = []
 WIDTH = n*c+2
 HEIGHT = WIDTH
 
+racine = tk.Tk()
+racine.title("Projet robot ricochet")
 
-def Clavier(event):
-    """ Gestion de l'événement Appui sur une touche du clavier """
-    global PosX1, PosY1, PosX2, PosY2, PosX3, PosY3, PosX4, PosY4
-    touche = event.keysym
-    print(touche)
-    # déplacement vers le haut
-    if touche == 'Up':
-            PosY1 -= 20
-            PosY2 -= 20 
-            PosY3 -= 20
-            PosY4 -= 20
-    # déplacement vers le bas
-    if touche == 'Down':
-        PosY1 += 20
-        PosY2 += 20
-        PosY3 += 20
-        PosY4 += 20
-    # déplacement vers la droite
-    if touche == 'Right':
-        PosX1 += 20
-        PosX2 += 20
-        PosX3 += 20
-        PosX4 += 20
-    # déplacement vers la gauche
-    if touche == 'Left':
-        PosX1 -= 20
-        PosX2 -= 20
-        PosX3 -= 20
-        PosX4 -= 20
-    # on dessine le pion à sa nouvelle position
-    canvas.coords(PionV,PosX1 -10, PosY1 -10, PosX1 +10, PosY1 +10)
-    canvas.coords(PionR,PosX2 -10, PosY2 -10, PosX2 +10, PosY2 +10)
-    canvas.coords(PionB,PosX3 -10, PosY3 -10, PosX3 +10, PosY3 +10)
-    canvas.coords(PionJ,PosX4 -10, PosY4 -10, PosX4 +10, PosY4 +10)
-
-
-
-# position initiale du pion
-PosX1 = 125
-PosY1 = 575
-PosX2 = 243
-PosY2 = 270
-PosX3 = 270
-PosY3 = 189
-PosX4 = 54
-PosY4 = 351
-
-# Création d'un widget Canvas (zone graphique)
-Largeur = 100
-Hauteur = 100
-canvas = tk.Canvas(fenetre, width=WIDTH, height=HEIGHT, bg="white")
-PionV = canvas.create_oval(PosX1-20,PosY1-20,PosX1+20,PosY1+20,width=2,outline='black',fill='green')#, select= False)
-PionR = canvas.create_oval(PosX2-20,PosY2-20,PosX2+20,PosY2+20,width=2,outline='black',fill='red')#, select= False)
-PionB = canvas.create_oval(PosX3-20,PosY3-20,PosX3+20,PosY3+20,width=2,outline='black',fill='blue')#, select= False)
-PionJ = canvas.create_oval(PosX4-20,PosY4-20,PosX4+20,PosY4+20,width=2,outline='black',fill='yellow')#, select= False)
-canvas.focus_set()
-canvas.bind('<Key>',Clavier)
-canvas.grid(row =1, column =0)
+canvas = tk.Canvas(racine, width=WIDTH, height=HEIGHT, bg="white")
+canvas.grid()
 
 for ligne in range(n):
     transit = []
@@ -136,22 +61,4 @@ mur_horizontal20 = canvas.create_rectangle(550+2, 750-2, 600+2, 750+5, fill="bla
 
 carre_restart = canvas.create_rectangle(350+2, 350+2, 450+2, 450+2, fill="black")
 
-
-
-# Création d'un widget Button (bouton Quitter)
-quitter = tk.Button(fenetre, text ='Quitter', command = fenetre.destroy)
-quitter.grid(row=6, column=0)
-# Création d'un label Button (manière de jouer)
-explication = tk.Label(fenetre, text ='Selectionne un pion avec ta souris puis utilise les fléches de ton clavier pour déplacer.')
-explication.grid(row=0, column=0)
-
-
-fenetre.mainloop()
-
-
-
-
-
-
-
-
+racine.mainloop()
