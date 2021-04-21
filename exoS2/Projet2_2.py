@@ -11,6 +11,7 @@
 ###################################################
 
 import tkinter as tk
+from tkinter.constants import END, LEFT
 racine = tk.Tk()
 racine.title("Projet robot ricochet")
 racine.configure(width = 300, height = 300, bg ='beige')
@@ -83,7 +84,7 @@ carre_restart = canvas.create_rectangle(350+2, 350+2, 450+2, 450+2, fill="black"
 
 
 #Crée les robot et leurs paramètres
-def robot_couleur_rouge():
+def robot_rouge():
     
     x, y = WIDTH // 2, HEIGHT // 2
     dx, dy = 2, 4
@@ -93,7 +94,7 @@ def robot_couleur_rouge():
                                 fill="rouge")
     return [cercle, dx, dy]
 
-def robot_couleur_jaune():
+def robot_jaune():
     
     x, y = WIDTH // 2, HEIGHT // 2
     dx, dy = 2, 4
@@ -103,7 +104,7 @@ def robot_couleur_jaune():
                                 fill="jaune")
     return [cercle, dx, dy]
 
-def robot_couleur_vert():
+def robot_vert():
     
     x, y = WIDTH // 2, HEIGHT // 2
     dx, dy = 2, 4
@@ -113,7 +114,7 @@ def robot_couleur_vert():
                                 fill="vert")
     return [cercle, dx, dy]
 
-def robot_couleur_bleu():
+def robot_bleu():
     
     x, y = WIDTH // 2, HEIGHT // 2
     dx, dy = 2, 4
@@ -129,8 +130,34 @@ def selectionne():
     pass
 
 #Associe les touches directionnelles du clavier "haut","bas","gauche","droite" au déplacement du robot
-def bind():
-    pass
+def bind(event):
+    global PosX1, PosY1, PosX2, PosY2, PosX3, PosY3, PosX4, PosY4
+    touche = event.keysym
+    print(touche)
+    # déplacement vers le haut
+    if touche == 'Up':
+        PosY1 -= 20
+        PosY2 -= 20 
+        PosY3 -= 20
+        PosY4 -= 20
+    # déplacement vers le bas
+    if touche == 'Down':
+        PosY1 += 20
+        PosY2 += 20
+        PosY3 += 20
+        PosY4 += 20
+    # déplacement vers la droite
+    if touche == 'Right':
+        PosX1 += 20
+        PosX2 += 20
+        PosX3 += 20
+        PosX4 += 20
+    # déplacement vers la gauche
+    if touche == 'Left':
+        PosX1 -= 20
+        PosX2 -= 20
+        PosX3 -= 20
+        PosX4 -= 20
 
 #Permet de faire arrêter le robot s'il rencontre un obstacle / distance maximale de déplacement autorisé
 def bounce():
