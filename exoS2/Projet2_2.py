@@ -12,7 +12,7 @@ def robot_couleur_rouge():
     
     x, y = LARGEUR // 2, HAUTEUR // 2
     dx, dy = 2, 4
-    rayon = 10
+    rayon = 20
     cercle = canvas.create_oval((x-rayon, y-rayon),
                                 (x+rayon, y+rayon),
                                 fill="rouge")
@@ -22,7 +22,7 @@ def robot_couleur_jaune():
     
     x, y = LARGEUR // 2, HAUTEUR // 2
     dx, dy = 2, 4
-    rayon = 10
+    rayon = 20
     cercle = canvas.create_oval((x-rayon, y-rayon),
                                 (x+rayon, y+rayon),
                                 fill="jaune")
@@ -32,7 +32,7 @@ def robot_couleur_vert():
     
     x, y = LARGEUR // 2, HAUTEUR // 2
     dx, dy = 2, 4
-    rayon = 10
+    rayon = 20
     cercle = canvas.create_oval((x-rayon, y-rayon),
                                 (x+rayon, y+rayon),
                                 fill="vert")
@@ -42,7 +42,7 @@ def robot_couleur_bleu():
     
     x, y = LARGEUR // 2, HAUTEUR // 2
     dx, dy = 2, 4
-    rayon = 10
+    rayon = 20
     cercle = canvas.create_oval((x-rayon, y-rayon),
                                 (x+rayon, y+rayon),
                                 fill="bleu")
@@ -58,25 +58,12 @@ def carre():
 
 
 
-def mouvement():
 
 
 
 
 
-def undo():
-     repeat = input()
-    if :
-        for i in range(repeat):
-            canvas.delete()
-            del()
 
-
-cpt=0          
-def compteur(event):
-    global cpt
-    ? =str(cpt)
-    cpt = cpt + 1
 
 
 

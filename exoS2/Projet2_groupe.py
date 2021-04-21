@@ -27,6 +27,12 @@ WIDTH = n*c+2
 HEIGHT = WIDTH
 
 
+def mouvement():
+    """Déplace la balle et ré-appelle la fonction avec un compte-à-rebours"""
+    rebond()
+
+
+
 def Clavier(event):
     """ Gestion de l'événement Appui sur une touche du clavier """
     global PosX1, PosY1, PosX2, PosY2, PosX3, PosY3, PosX4, PosY4
@@ -34,10 +40,10 @@ def Clavier(event):
     print(touche)
     # déplacement vers le haut
     if touche == 'Up':
-            PosY1 -= 20
-            PosY2 -= 20 
-            PosY3 -= 20
-            PosY4 -= 20
+        PosY1 -= 20
+        PosY2 -= 20 
+        PosY3 -= 20
+        PosY4 -= 20
     # déplacement vers le bas
     if touche == 'Down':
         PosY1 += 20
@@ -57,22 +63,50 @@ def Clavier(event):
         PosX3 -= 20
         PosX4 -= 20
     # on dessine le pion à sa nouvelle position
-    canvas.coords(PionV,PosX1 -10, PosY1 -10, PosX1 +10, PosY1 +10)
-    canvas.coords(PionR,PosX2 -10, PosY2 -10, PosX2 +10, PosY2 +10)
-    canvas.coords(PionB,PosX3 -10, PosY3 -10, PosX3 +10, PosY3 +10)
-    canvas.coords(PionJ,PosX4 -10, PosY4 -10, PosX4 +10, PosY4 +10)
+    canvas.coords(PionV,PosX1 -10, PosY1 -10, PosX1 +10, PosY1 +10, command = mouvement())
+    canvas.coords(PionR,PosX2 -10, PosY2 -10, PosX2 +10, PosY2 +10, command = mouvement())
+    canvas.coords(PionB,PosX3 -10, PosY3 -10, PosX3 +10, PosY3 +10, command = mouvement())
+    canvas.coords(PionJ,PosX4 -10, PosY4 -10, PosX4 +10, PosY4 +10, command = mouvement())
+
+
+def rebond():
+    """Fait rebondir la balle sur les bords du canevas"""
+    global PionV, PionR, PionB, PionJ
+    x0, y0, x1, y1 = canvas.coords(PionV[])
+    if x0 <= 0 or x1 >= 600:
+        PionV[1] = -PionV[1]
+    if y0 <= 0 or y1 >= 400:
+        PionV[2] = -PionV[2]
+
+    x0, y0, x1, y1 = canvas.coords(PionR[])
+    if x0 <= 0 or x1 >= 600:
+        PionR[1] = -PionR[1]
+    if y0 <= 0 or y1 >= 400:
+        PionR[2] = -PionR[2]
+
+    x0, y0, x1, y1 = canvas.coords(PionB[])
+    if x0 <= 0 or x1 >= 600:
+        PionB[1] = -PionB[1]
+    if y0 <= 0 or y1 >= 400:
+        PionB[2] = -PionB[2]
+
+    x0, y0, x1, y1 = canvas.coords(PionJ[])
+    if x0 <= 0 or x1 >= 600:
+        PionJ[1] = -PionJ[1]
+    if y0 <= 0 or y1 >= 400:
+        PionJ[2] = -PionJ[2]
 
 
 
 # position initiale du pion
-PosX1 = 125
-PosY1 = 575
-PosX2 = 243
-PosY2 = 270
-PosX3 = 270
-PosY3 = 189
-PosX4 = 54
-PosY4 = 351
+PosX1 = 177
+PosY1 = 577
+PosX2 = 427
+PosY2 = 477
+PosX3 = 477
+PosY3 = 327
+PosX4 = 75
+PosY4 = 625
 
 # Création d'un widget Canvas (zone graphique)
 Largeur = 100
