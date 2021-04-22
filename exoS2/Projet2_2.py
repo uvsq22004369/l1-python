@@ -22,9 +22,14 @@ cases = []
 WIDTH = n*c+2
 HEIGHT = WIDTH
 colors = ["rouge",  "jaune", "vert", "bleu"]
-
-
-
+dx1 = 177
+dy1 = 577
+dx2 = 427
+dy2 = 477
+dx3 = 477
+dy3 = 327
+dx4 = 75
+dy4 = 625
 
 canvas = tk.Canvas(racine, width=WIDTH, height=HEIGHT, bg="white")
 canvas.grid()
@@ -87,43 +92,43 @@ carre_restart = canvas.create_rectangle(350+2, 350+2, 450+2, 450+2, fill="black"
 def robot_rouge():
     
     x, y = WIDTH // 2, HEIGHT // 2
-    dx, dy = 2, 4
-    rayon = 10
+    dx2, dx1
+    rayon = 20
     cercle = canvas.create_oval((x-rayon, y-rayon),
                                 (x+rayon, y+rayon),
-                                fill="rouge")
-    return [cercle, dx, dy]
+                                fill="red")
+    return [cercle, dx2, dy2]
 
 def robot_jaune():
     
     x, y = WIDTH // 2, HEIGHT // 2
-    dx, dy = 2, 4
-    rayon = 10
+    dx4, dy4
+    rayon = 20
     cercle = canvas.create_oval((x-rayon, y-rayon),
                                 (x+rayon, y+rayon),
-                                fill="jaune")
-    return [cercle, dx, dy]
+                                fill="yellow")
+    return [cercle, dx4, dy4]
 
 def robot_vert():
     
     x, y = WIDTH // 2, HEIGHT // 2
-    dx, dy = 2, 4
-    rayon = 10
+    dx1, dy1
+    rayon = 20
     cercle = canvas.create_oval((x-rayon, y-rayon),
                                 (x+rayon, y+rayon),
-                                fill="vert")
-    return [cercle, dx, dy]
+                                fill="green")
+    return [cercle, dx1, dy1]
 
 def robot_bleu():
     
     x, y = WIDTH // 2, HEIGHT // 2
-    dx, dy = 2, 4
-    rayon = 10
+    dx3, dx3
+    rayon = 20
     cercle = canvas.create_oval((x-rayon, y-rayon),
                                 (x+rayon, y+rayon),
-                                fill="bleu")
+                                fill="blue")
 
-    return [cercle, dx, dy]
+    return [cercle, dx3, dy3]
 
 #Définit quel robot de couleur est actuellement sélectionné
 def selectionne():
@@ -131,33 +136,50 @@ def selectionne():
 
 #Associe les touches directionnelles du clavier "haut","bas","gauche","droite" au déplacement du robot
 def bind(event):
-    global PosX1, PosY1, PosX2, PosY2, PosX3, PosY3, PosX4, PosY4
+    global dx1, dy1, dx2, dy2, dx3, dy3, dx4, dy4
     touche = event.keysym
     print(touche)
     # déplacement vers le haut
     if touche == 'Up':
-        PosY1 -= 20
-        PosY2 -= 20 
-        PosY3 -= 20
-        PosY4 -= 20
+        if selectionne == robot_rouge :
+            dy2 -= 20
+        elif selectionne == robot_bleu :
+            dy3 -= 20 
+        elif selectionne == robot_jaune :
+            dy4 -= 20
+        elif selectionne == robot_vert :
+            dy1 -= 20
     # déplacement vers le bas
     if touche == 'Down':
-        PosY1 += 20
-        PosY2 += 20
-        PosY3 += 20
-        PosY4 += 20
+        if selectionne == robot_rouge :
+            dy2 += 20
+        elif selectionne == robot_bleu :
+            dy3 += 20
+        elif selectionne == robot_jaune :
+            dy4 += 20
+        elif selectionne == robot_vert :
+            dy1 += 20
     # déplacement vers la droite
     if touche == 'Right':
-        PosX1 += 20
-        PosX2 += 20
-        PosX3 += 20
-        PosX4 += 20
+        if selectionne == robot_rouge :
+            dx2 += 20
+        elif selectionne == robot_bleu :
+            dx3 += 20
+        elif selectionne == robot_jaune :
+            dx4 += 20
+        elif selectionne == robot_vert :
+            dx1 += 20
     # déplacement vers la gauche
     if touche == 'Left':
-        PosX1 -= 20
-        PosX2 -= 20
-        PosX3 -= 20
-        PosX4 -= 20
+        if selectionne == robot_rouge :
+            dx2 -= 20
+        elif selectionne == robot_bleu :
+            dx3 -= 20
+        elif selectionne == robot_jaune :
+            dx4 -= 20
+        elif selectionne == robot_vert :
+            dx1 -= 20
+
 
 #Permet de faire arrêter le robot s'il rencontre un obstacle / distance maximale de déplacement autorisé
 def bounce():
@@ -190,5 +212,13 @@ def load():
 #Permet d'éditer le plateau en rajoutant des éléments 
 def editor():
     pass
+
+
+robot_vert()
+robot_bleu()
+robot_jaune()
+robot_rouge()
+
+
 
 racine.mainloop()
