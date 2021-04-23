@@ -29,8 +29,8 @@ HEIGHT = WIDTH
 
 def mouvement():
     """Déplace la balle et ré-appelle la fonction avec un compte-à-rebours"""
-    rebond()
-
+    #rebond()
+    pass
 
 
 def Clavier(event):
@@ -69,32 +69,6 @@ def Clavier(event):
     canvas.coords(PionJ,PosX4 -10, PosY4 -10, PosX4 +10, PosY4 +10, command = mouvement())
 
 
-def rebond():
-    """Fait rebondir la balle sur les bords du canevas"""
-    global PionV, PionR, PionB, PionJ
-    x0, y0, x1, y1 = canvas.coords(PionV[])
-    if x0 <= 0 or x1 >= 600:
-        PionV[1] = -PionV[1]
-    if y0 <= 0 or y1 >= 400:
-        PionV[2] = -PionV[2]
-
-    x0, y0, x1, y1 = canvas.coords(PionR[])
-    if x0 <= 0 or x1 >= 600:
-        PionR[1] = -PionR[1]
-    if y0 <= 0 or y1 >= 400:
-        PionR[2] = -PionR[2]
-
-    x0, y0, x1, y1 = canvas.coords(PionB[])
-    if x0 <= 0 or x1 >= 600:
-        PionB[1] = -PionB[1]
-    if y0 <= 0 or y1 >= 400:
-        PionB[2] = -PionB[2]
-
-    x0, y0, x1, y1 = canvas.coords(PionJ[])
-    if x0 <= 0 or x1 >= 600:
-        PionJ[1] = -PionJ[1]
-    if y0 <= 0 or y1 >= 400:
-        PionJ[2] = -PionJ[2]
 
 
 
