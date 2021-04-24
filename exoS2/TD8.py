@@ -39,9 +39,9 @@ def modifie(event):
 
 def regle_vie(i,j,etat_grille):
     count = - etat_grille[i][j]
-    for i in range(i-1, i+2):
-        for i in range(j-1, j+2):
-            if etat_grille[i][j]==1:
+    for k in range(i-1, i+2):
+        for l in range(j-1, j+2):
+            if etat_grille[k%CASES][l%CASES]==1:
                 count+=1
     if count==1:
         etat_grille[i][j]=1
@@ -49,6 +49,7 @@ def regle_vie(i,j,etat_grille):
         etat_grille[i][j]=1
     else:
         etat_grille[i][j]=0
+    return etat_grille[i][j]
  
 
 def update(ancien_etat,nouvel_etat):

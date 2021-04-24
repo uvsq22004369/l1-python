@@ -162,4 +162,11 @@ fenetre.mainloop()
 
 
 
-
+        if selectionne == robot_rouge :
+            y -= 20
+        elif selectionne == robot_bleu :
+            y -= 20 
+        elif selectionne == robot_jaune :
+            y -= 20
+        elif selectionne == robot_vert :
+            y -= 20
