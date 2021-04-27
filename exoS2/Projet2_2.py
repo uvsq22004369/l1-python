@@ -35,43 +35,6 @@ X4 = 75
 Y4 = 625
 
 
-#Crée les robot et leurs paramètres
-def robot_rouge():
-    couleur = "rouge"
-    dx, dy = 1, 2
-    rayon = 20
-    cercle = canvas.create_oval((X2-rayon, Y2-rayon),
-                                (X2+rayon, Y2+rayon),
-                                fill="red")
-    return [cercle, dx, dy]
-
-def robot_jaune():
-    couleur = "jaune"
-    dx, dy = 1, 2
-    rayon = 20
-    cercle = canvas.create_oval((X4-rayon, Y4-rayon),
-                                (X4+rayon, Y4+rayon),
-                                fill="yellow")
-    return [cercle, dx, dy]
-
-def robot_vert():
-    couleur = "vert"
-    dx, dy = 1, 2
-    rayon = 20
-    cercle = canvas.create_oval((X1-rayon, Y1-rayon),
-                                (X1+rayon, Y1+rayon),
-                                fill="green")
-    return [cercle, dx, dy]
-
-def robot_bleu():
-    couleur = "bleu"
-    dx, dy = 1, 2
-    rayon = 20
-    cercle = canvas.create_oval((X3-rayon, Y3-rayon),
-                                (X3+rayon, Y3+rayon),
-                                fill="blue")
-
-    return [cercle, dx, dy]
 
 #Définit quel robot de couleur est actuellement sélectionné
 def selectionne(event):
@@ -124,6 +87,45 @@ def Clavier(event):
     canvas.coords(robot_rouge, X2-100, Y2-100, X2+100, Y2+100)
     canvas.coords(robot_bleu, X3-10, Y3-10, X3+10, Y3+10)
     canvas.coords(robot_jaune, X4-10, Y4-10, X4+10, Y4+10)
+
+
+#Crée les robot et leurs paramètres
+def robot_rouge():
+    couleur = "rouge"
+    dx, dy = 1, 2
+    rayon = 20
+    cercle = canvas.create_oval((X2-rayon, Y2-rayon),
+                                (X2+rayon, Y2+rayon),
+                                fill="red")
+    return [cercle, dx, dy]
+
+def robot_jaune():
+    couleur = "jaune"
+    dx, dy = 1, 2
+    rayon = 20
+    cercle = canvas.create_oval((X4-rayon, Y4-rayon),
+                                (X4+rayon, Y4+rayon),
+                                fill="yellow")
+    return [cercle, dx, dy]
+
+def robot_vert():
+    couleur = "vert"
+    dx, dy = 1, 2
+    rayon = 20
+    cercle = canvas.create_oval((X1-rayon, Y1-rayon),
+                                (X1+rayon, Y1+rayon),
+                                fill="green")
+    return [cercle, dx, dy]
+
+def robot_bleu():
+    couleur = "bleu"
+    dx, dy = 1, 2
+    rayon = 20
+    cercle = canvas.create_oval((X3-rayon, Y3-rayon),
+                                (X3+rayon, Y3+rayon),
+                                fill="blue")
+
+    return [cercle, dx, dy]
 
 
 #Permet de faire arrêter le robot s'il rencontre un obstacle / distance maximale de déplacement autorisé
@@ -195,7 +197,7 @@ canvas.bind('<Key>', Clavier)
 
 canvas_move = tk.Canvas(racine, width= WIDTH/5, height= HEIGHT, bg="black")
 canvas_move.bind('Key', move)
-canvas_move.grid(row=1, column=1)
+canvas_move.pack
 
 
 for ligne in range(n):
@@ -253,8 +255,16 @@ carre_restart = canvas.create_rectangle(350+2, 350+2, 450+2, 450+2, fill="black"
 robot_rouge()
 
 sauvegarde = tk.Button(racine, text="sauvegarder", command=save())
-sauvegarde.grid(row=1, column= 3)
+sauvegarde.grid(row=0, column= 0)
 
+texte_compteur = tk.Label(racine, text="Nombre de déplacements:  ")
+texte_compteur.grid(row=0, column=3)
+
+texte_resultat = tk.Label(racine, text="Jeu résolu: NON", bg="red", fg="white")
+texte_resultat.grid(row=0, column=2)
+
+boutton_quitter = tk.Button(racine, text='Quitter', command=racine.destroy)
+boutton_quitter.grid(row=0, column=0)
 
 
 
