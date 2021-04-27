@@ -22,6 +22,7 @@ cases = []
 WIDTH = n*c+2
 HEIGHT = WIDTH
 couleur = ""
+stop = False
 
 # position initiale des robots
 X1 = 177
@@ -133,9 +134,21 @@ def bounce():
 def show_Path():
     pass
 
+
+def est_dans_carre(x, y):
+    """Retourne True si le point de coordonnées (x, y)
+    est dans le rectangle et False sinon"""
+    return 350 + 2 < x < 450 + 2 and 350 + 2 < y < 450 + 2
+
+
 #Fait recommencer le jeu
-def reset():
-    pass
+def reset(event):
+    """Recommence la partie si clic sur le carre"""
+    global stop
+    if est_dans_carre(event.x, event.y) and not stop:
+        pass
+    else:
+        stop = True
     
 
 #Affiche le score / liste des meilleurs scores

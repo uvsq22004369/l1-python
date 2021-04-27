@@ -18,12 +18,20 @@ import tkinter as tk
 texte1 = "kd oqnbgzhm ehbghdq ztqz tm bncd ozq rtarshstshnm zkogzadshptd: bgzptd kdssqd drs qdlokzbdd ozq tmd ztsqd. tshkhrdq kz eqdptdmbd cdr kdssqdr ontq cdbncdq kd ldrrzfd."
 #pour dechifrer le texte1 copier coller le texte dans le label pour entrer le texte.
 #entrer la clé : a
-#cliquer sur dechifrer texte
+#cliquer sur dechifrer texte 1
 
 #le prochain fichier aura un code par substitution alphabetique chaque lettre est remplacee par une autre: 
 #utiliser la frequence des lettres pour decoder le message.
 
 texte2 = "gx qosvlnkd wkvlkxo xiu vscx qno yd fsu cx qniix cx unkggx kdvsddyx xu vsdukxdu g'kdckvx. gxi gxuuoxi cy fsu cx qniix qxofxuuxdu cx cxvngxo gxi gxuuoxi cy fxiinmx sokmkdng fscygs 26. ixygxi gxi gxuuoxi cx n n a isdu vlkwwoxxi."
+#
+
+#g=l, x=e, i=s, u=t, o=r, y=u, d=n, s=o, v=c, k=i, q=p, l=h, n=a, w=f, c=d, f=m, m=g, a=
+# b j k q v w x y z 
+#Le prochain fichier est codé par un mot de passe de taille inconnue et contient l'indice.
+#Les lettres du mot de passe permettent dedécaler les lettres du message original modulo 26. 
+# Seules les lettres de a à - sont chiffrées
+
 texte3 = "dceuq e n'ehfp cg p'kyhhep uqfw cgiy citudm c gzudiq ni ezhd px c jhptv ep cggsht. kg hdtymdt xdzei gdx rzyq wir mvzxpw, cifcchdb znwd ccyw wy lkcsht, dp isgd uqfw wy ?"
 texte4 = "jeqeqecvnf suozvb jfk muj  dfjr fmy rvuqsk ve  itajtd mifwz nnrt  imtrvp zuh srzmzbqz tepr zn  tmsnirt imtrvp nec hw  dzpqj tjf pdecpr zl jr  ptejnt ekpb iu b  iiuyu iy ijz surg rjs ttsn  votp ac hw rzpuen jozw  rvwdvx jbo nirscyjv fi  svmkyw ve iaflss yie te  teffvv'u riznxjzvv jfk  nelrhtjrk dh sivdvjvve  yi cvb à jffrds tdp  rvwdv sebr onvnqsy zvp  zuhjwiM le wmifo wiezib nec  triot qmjvr'c onrwz  memfqg srq wdaietsq vk"
 alphabet=[]
@@ -69,31 +77,21 @@ def dec_texte(texte,cle):
     return res
 
 
-def chiffre():
+def dechiffre():
     resultat.delete(0, tk.END)
     if entree_texte.get() == "" or entree_cle.get() == "":
       resultat.insert(0, "Il manque quelque chose en entrée :/")
     resultat.insert(0, dec_texte(entree_texte.get(), entree_cle.get()))
 
 
-def dechiffrement(texte_a_decoder, cle):
-    texte_decode = ""
-    t, c = 0, 0
-    while len(texte_decode) < len(texte_a_decoder):
-      texte_decode += decalage(texte_a_decoder[t], chr(256-ord(cle[c])))
-      t, c = t + 1, c + 1
-      if c == len(cle):
-        c = 0
-    return texte_decode
-
-def dechiffre():
-    if entree_texte.get() == "" or entree_cle.get() == "":
-      resultat.insert(0, "Il manque quelque chose en entrée :/")
-    else:
-      label_res.config(text = dechiffrement(resultat.get(), entree_cle.get()))
-
 def chiffre_xor(lettre_message,lettre_cle):
     return (chr(ord(lettre_message) ^ ord(lettre_cle)))
+
+
+def decodage_substitution(subst, chaine, decode=False):
+   pass
+   alphabet
+
 
 
 racine=tk.Tk()
@@ -111,16 +109,16 @@ label_texte.grid(row = 0, column = 1)
 label_cle = tk.Label(racine,font = ("helvetica", "20"), text = "Entrer la clé ici.")
 label_cle.grid(row = 1, column = 1)
 
-bouton_coder1=tk.Button(racine, text="dechiffrer texte 1",fg="black", width=15, command=chiffre)
+bouton_coder1=tk.Button(racine, text="dechiffrer texte 1",fg="black", width=15, command=dechiffre)
 bouton_coder1.grid(row=2, column=0)
 
-bouton_coder2=tk.Button(racine, text="dechiffrer texte 2",fg="black", width=15, command=chiffre)
+bouton_coder2=tk.Button(racine, text="dechiffrer texte 2",fg="black", width=15, command=decodage_substitution)
 bouton_coder2.grid(row=2, column=0)
 
-bouton_coder3=tk.Button(racine, text="dechiffrer texte 3",fg="black", width=15, command=chiffre)
+bouton_coder3=tk.Button(racine, text="dechiffrer texte 3",fg="black", width=15, command=dechiffre)
 bouton_coder3.grid(row=2, column=0)
 
-bouton_coder4=tk.Button(racine, text="dechiffrer texte 4",fg="black", width=15, command=chiffre)
+bouton_coder4=tk.Button(racine, text="dechiffrer texte 4",fg="black", width=15, command=dechiffre)
 bouton_coder4.grid(row=2, column=0)
 
 
