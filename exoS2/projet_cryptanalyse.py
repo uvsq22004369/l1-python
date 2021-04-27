@@ -16,7 +16,13 @@
 import tkinter as tk
 
 texte1 = "kd oqnbgzhm ehbghdq ztqz tm bncd ozq rtarshstshnm zkogzadshptd: bgzptd kdssqd drs qdlokzbdd ozq tmd ztsqd. tshkhrdq kz eqdptdmbd cdr kdssqdr ontq cdbncdq kd ldrrzfd."
-#le prochain fichier aura un code par substitution alphabetique  chaque lettre est remplacee par une autre: utiliser la frequence des lettres pour decoder le message.
+#pour dechifrer le texte1 copier coller le texte dans le label pour entrer le texte.
+#entrer la clé : a
+#cliquer sur dechifrer texte
+
+#le prochain fichier aura un code par substitution alphabetique chaque lettre est remplacee par une autre: 
+#utiliser la frequence des lettres pour decoder le message.
+
 texte2 = "gx qosvlnkd wkvlkxo xiu vscx qno yd fsu cx qniix cx unkggx kdvsddyx xu vsdukxdu g'kdckvx. gxi gxuuoxi cy fsu cx qniix qxofxuuxdu cx cxvngxo gxi gxuuoxi cy fxiinmx sokmkdng fscygs 26. ixygxi gxi gxuuoxi cx n n a isdu vlkwwoxxi."
 texte3 = "dceuq e n'ehfp cg p'kyhhep uqfw cgiy citudm c gzudiq ni ezhd px c jhptv ep cggsht. kg hdtymdt xdzei gdx rzyq wir mvzxpw, cifcchdb znwd ccyw wy lkcsht, dp isgd uqfw wy ?"
 texte4 = "jeqeqecvnf suozvb jfk muj  dfjr fmy rvuqsk ve  itajtd mifwz nnrt  imtrvp zuh srzmzbqz tepr zn  tmsnirt imtrvp nec hw  dzpqj tjf pdecpr zl jr  ptejnt ekpb iu b  iiuyu iy ijz surg rjs ttsn  votp ac hw rzpuen jozw  rvwdvx jbo nirscyjv fi  svmkyw ve iaflss yie te  teffvv'u riznxjzvv jfk  nelrhtjrk dh sivdvjvve  yi cvb à jffrds tdp  rvwdv sebr onvnqsy zvp  zuhjwiM le wmifo wiezib nec  triot qmjvr'c onrwz  memfqg srq wdaietsq vk"
@@ -38,30 +44,29 @@ def nbrOccur(texte) :
     vide()
     for c in texte : 
         if 97 <= ord(c) <= 122 : 
-            alphabet[ord(c)-97][1] += round(1/len(texte),3)*100
+            alphabet[ord(c)-97][1] += round[(1/len(texte),3)*100]
 
 
 nbrOccur(texte1)
 print(alphabet)
 
 def rang(lettre) :
-    return ord(lettre)-97
+    return ord(lettre)-96
 
-def decalage(lettre1,lettre2):
-    if  ord(lettre1) < 97 or ord(lettre1) > 122:
-        return lettre1
-    return chr(((rang(lettre1)+rang(lettre2))%26)+97)
+def decalage(lettre_message,lettre_cle):
+    if  (97 <= ord(lettre_message)<= 122):
+        return chr((rang(lettre_message) + rang(lettre_cle))%26 + 96)
+    else:
+        return lettre_message
+
 
 
 def dec_texte(texte,cle):
-    texte_code = ""
-    t, c = 0, 0
-    while len(texte_code) < len(texte):
-      texte_code += decalage(texte[t], cle[c])
-      t, c = t + 1, c + 1
-      if c == len(cle):
-        c = 0
-    return texte_code
+    taille_cle = len(cle)
+    res = ""
+    for i in range(len(texte)):
+        res+= decalage(texte[i],cle[i%taille_cle])
+    return res
 
 
 def chiffre():
@@ -106,11 +111,19 @@ label_texte.grid(row = 0, column = 1)
 label_cle = tk.Label(racine,font = ("helvetica", "20"), text = "Entrer la clé ici.")
 label_cle.grid(row = 1, column = 1)
 
-bouton_coder=tk.Button(racine, text="Chiffrer texte",fg="black", width=15, command=chiffre)
-bouton_coder.grid(row=2, column=0)
+bouton_coder1=tk.Button(racine, text="dechiffrer texte 1",fg="black", width=15, command=chiffre)
+bouton_coder1.grid(row=2, column=0)
 
-bouton_decoder=tk.Button(racine,text="Déchiffrer texte",fg="black",  width=15,command=dechiffre)
-bouton_decoder.grid(row=2, column=1)
+bouton_coder2=tk.Button(racine, text="dechiffrer texte 2",fg="black", width=15, command=chiffre)
+bouton_coder2.grid(row=2, column=0)
+
+bouton_coder3=tk.Button(racine, text="dechiffrer texte 3",fg="black", width=15, command=chiffre)
+bouton_coder3.grid(row=2, column=0)
+
+bouton_coder4=tk.Button(racine, text="dechiffrer texte 4",fg="black", width=15, command=chiffre)
+bouton_coder4.grid(row=2, column=0)
+
+
 
 resultat=tk.Entry(racine,width = 50, font = ("helvetica", "20"))
 resultat.grid(row=3,column=0)
