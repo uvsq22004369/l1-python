@@ -66,15 +66,8 @@ def selectionne(event):
     """ Permet de faire la selection d'un pion pour le bouger """
     pass
 
+
 #Permet de faire arrêter le robot s'il rencontre un obstacle / distance maximale de déplacement autorisé
-def collision(robot, obstacle):
-    """ Fait s'arreter le robots lorsqu'il rencontre un obstacle """
-    if robot['x'] >= obstacle['x'] + obstacle['longueur'] or \
-       robot['x'] + robot['longueur'] <= obstacle['x'] or \
-       robot['y'] >= obstacle['y'] + obstacle['hauteur'] or \
-       robot['y'] + robot['hauteur'] <= obstacle['y']:
-        return False
-    return True
 
 def Clavier(event):
     """ Gestion de l'événement Appui sur une touche du clavier """
