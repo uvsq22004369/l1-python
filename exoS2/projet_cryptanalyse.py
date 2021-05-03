@@ -24,17 +24,26 @@ texte1 = "kd oqnbgzhm ehbghdq ztqz tm bncd ozq rtarshstshnm zkogzadshptd: bgzptd
 #utiliser la frequence des lettres pour decoder le message.
 
 texte2 = "gx qosvlnkd wkvlkxo xiu vscx qno yd fsu cx qniix cx unkggx kdvsddyx xu vsdukxdu g'kdckvx. gxi gxuuoxi cy fsu cx qniix qxofxuuxdu cx cxvngxo gxi gxuuoxi cy fxiinmx sokmkdng fscygs 26. ixygxi gxi gxuuoxi cx n n a isdu vlkwwoxxi."
-#
+#pour dechifrer le texte2 copier coller le texte dans le label pour entrer le texte.
+#il n'y a pas de clé a entré car il s'agit de substitution mais les lettres sont substituer ainsi :
+#g=l, x=e, i=s, u=t, o=r, y=u, d=n, s=o, v=c, k=i, q=p, l=h, n=a, w=f, c=d, f=m, m=g, a=y
+#cliquer sur dechifrer texte 2
 
-#g=l, x=e, i=s, u=t, o=r, y=u, d=n, s=o, v=c, k=i, q=p, l=h, n=a, w=f, c=d, f=m, m=g, a=
-# b j k q v w x y z 
 #Le prochain fichier est codé par un mot de passe de taille inconnue et contient l'indice.
 #Les lettres du mot de passe permettent dedécaler les lettres du message original modulo 26. 
-# Seules les lettres de a à - sont chiffrées
+# Seules les lettres de a à y sont chiffrées
 
 texte3 = "dceuq e n'ehfp cg p'kyhhep uqfw cgiy citudm c gzudiq ni ezhd px c jhptv ep cggsht. kg hdtymdt xdzei gdx rzyq wir mvzxpw, cifcchdb znwd ccyw wy lkcsht, dp isgd uqfw wy ?"
+#pour dechifrer le texte3 copier coller le texte dans le label pour entrer le texte.
+#entrer la clé : xova
+#les ' sont des z car celui-ci n'est pas coder
+#cliquer sur dechifrer texte 3
+
+#Bravo a l'aide de l'indice vous avez reussi a casser ce code et a finir ce devoir. 
+#Le dernier texte est pour les braves, regardez vous dans un miroir, en etes vous un ?
+
 texte4 = "jeqeqecvnf suozvb jfk muj  dfjr fmy rvuqsk ve  itajtd mifwz nnrt  imtrvp zuh srzmzbqz tepr zn  tmsnirt imtrvp nec hw  dzpqj tjf pdecpr zl jr  ptejnt ekpb iu b  iiuyu iy ijz surg rjs ttsn  votp ac hw rzpuen jozw  rvwdvx jbo nirscyjv fi  svmkyw ve iaflss yie te  teffvv'u riznxjzvv jfk  nelrhtjrk dh sivdvjvve  yi cvb à jffrds tdp  rvwdv sebr onvnqsy zvp  zuhjwiM le wmifo wiezib nec  triot qmjvr'c onrwz  memfqg srq wdaietsq vk"
-alphabet=[]
+
 
 alphabet=[]
 
@@ -48,15 +57,7 @@ def vide():
 
 alphabet_vide()
 
-def nbrOccur(texte) :
-    vide()
-    for c in texte : 
-        if 97 <= ord(c) <= 122 : 
-            alphabet[ord(c)-97][1] += round[(1/len(texte),3)*100]
 
-
-nbrOccur(texte1)
-print(alphabet)
 
 def rang(lettre) :
     return ord(lettre)-96
@@ -88,9 +89,35 @@ def chiffre_xor(lettre_message,lettre_cle):
     return (chr(ord(lettre_message) ^ ord(lettre_cle)))
 
 
-def decodage_substitution(subst, chaine, decode=False):
-   pass
-   alphabet
+def decodage_substitution(txt):
+    resultat.delete(0, tk.END)
+    specialChars = "!#$%^&*()" 
+    for specialChar in specialChars:
+       txt = txt.replace(specialChar, "")
+    print(txt) # A,Quick,brown,fox,jumped,over,the,lazy,dog
+    txt = txt.replace(",", " ")
+    print(txt) # A Quick brown fox jumped over the lazy dog
+    str.replace('x','e')
+    str.replace('g','l')
+    str.replace('i','s')
+    str.replace('o','r')
+    str.replace('u','t')
+    str.replace('y','u')
+    str.replace('d','n')
+    str.replace('s','o')
+    str.replace('v','c')
+    str.replace('k','i')
+    str.replace('q','p')
+    str.replace('l','h')
+    str.replace('n','a')
+    str.replace('w','f')
+    str.replace('c','d')
+    str.replace('f','m')
+    str.replace('m','g')
+    str.replace('a','z')
+    resultat.insert(0, dec_texte(entree_texte.get()))
+
+
 
 
 
@@ -113,20 +140,18 @@ bouton_coder1=tk.Button(racine, text="dechiffrer texte 1",fg="black", width=15, 
 bouton_coder1.grid(row=2, column=0)
 
 bouton_coder2=tk.Button(racine, text="dechiffrer texte 2",fg="black", width=15, command=decodage_substitution)
-bouton_coder2.grid(row=2, column=0)
+bouton_coder2.grid(row=3, column=0)
 
 bouton_coder3=tk.Button(racine, text="dechiffrer texte 3",fg="black", width=15, command=dechiffre)
-bouton_coder3.grid(row=2, column=0)
+bouton_coder3.grid(row=4, column=0)
 
 bouton_coder4=tk.Button(racine, text="dechiffrer texte 4",fg="black", width=15, command=dechiffre)
-bouton_coder4.grid(row=2, column=0)
-
-
+bouton_coder4.grid(row=5, column=0)
 
 resultat=tk.Entry(racine,width = 50, font = ("helvetica", "20"))
-resultat.grid(row=3,column=0)
+resultat.grid(row=6,column=0)
 
 label_res=tk.Label(racine,font = ("helvetica", "20"), text="Déchiffement ici.")
-label_res.grid(row = 3, column=1)
+label_res.grid(row = 6, column=1)
 
 racine.mainloop()
