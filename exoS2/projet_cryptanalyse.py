@@ -55,6 +55,18 @@ def vide():
     for x in alphabet :
         x[1]=0.0
 
+def nbrOccur(texte):
+    vide()
+    for c in texte:
+        if 97 <= ord(c) <= 122: #Vérifier si c'est une lettre
+            alphabet[ord(c)-97][1] += round(1/len(texte)*100, 3)
+    print(alphabet)
+
+
+print(nbrOccur(texte1))
+print(nbrOccur(texte2))
+print(nbrOccur(texte3))
+print(nbrOccur(texte4))
 alphabet_vide()
 
 
